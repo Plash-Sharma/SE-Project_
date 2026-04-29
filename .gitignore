@@ -1,0 +1,13 @@
+node_modules
+
+package-lock.json
+
+/src/generated/prisma
+
+.env
+
+uploads/
+
+downloads/
+
+dist/

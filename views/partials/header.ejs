@@ -1,0 +1,20 @@
+<div class="header">
+  <a class="brand" href="/">
+    <img src="/brand-icon.svg" alt="ShareFY" class="icon">
+    <div class="name">ShareFY</div>
+  </a>
+  <div class="nav">
+    <% if(!locals.currentUser) { %>
+      <a href="/auth/sign-up">Sign Up</a>
+      <a href="/auth/log-in">Login</a>
+      <% } else { %>
+        <% if(locals.navItems) {%>
+          <% navItems.forEach(navItem=> {%>
+            <a href="<%=navItem.url%>">
+              <%=navItem.name%>
+            </a>
+            <%})}%>
+              <a href="/auth/log-out">Log Out</a>
+              <% } %>
+  </div>
+</div>

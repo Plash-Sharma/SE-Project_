@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShareFY - Sign Up</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="shortcut icon" href="/brand-icon.svg" type="image/x-icon">
+  <meta name="color-scheme" content="light dark">
+</head>
+
+<body>
+  <%- include("./partials/header") %>
+
+    <div class="content-container">
+
+      <div class="form-container">
+        <div class="title">
+          Create your free account
+        </div>
+        <div class="form-name">Sign Up</div>
+        <% if(locals.errors) { %>
+          <%- include("./errors/errors") %>
+            <% } %>
+              <form action="/auth/sign-up" method="POST">
+                <div class="input-container">
+                  <input type="text" name="firstName" placeholder="First Name" value="<%= oldData?.firstName || '' %>"
+                    required>
+                </div>
+                <div class="input-container">
+                  <input type="text" name="lastName" placeholder="Last Name" value="<%= oldData?.lastName || '' %>"
+                    required>
+                </div>
+                <div class="input-container">
+                  <input type="email" name="email" placeholder="E-Mail" value="<%= oldData?.email || '' %>" required>
+                </div>
+                <div class="input-container">
+                  <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="input-container">
+                  <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-button-container">
+                  <div><input type="submit" value="Create Account" class="submit-button"></div>
+                </div>
+              </form>
+              <div class="bottom-section">
+                <div>Already have an account? <a href="/auth/log-in">Sign In</a></div>
+              </div>
+      </div>
+
+    </div>
+
+</body>
+
+<script src="/script.js"></script>
+
+</html>

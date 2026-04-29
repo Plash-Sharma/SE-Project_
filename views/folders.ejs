@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShareFY</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="shortcut icon" href="/brand-icon.svg" type="image/x-icon">
+  <meta name="color-scheme" content="light dark">
+</head>
+
+<body>
+  <%- include("./partials/header") %>
+    <div class="content-container">
+      <div class="content">
+        <div class="banner">
+          <div class="greeting">
+            <div class="text">Welcome, <%= currentUser?.firstName %>!
+            </div>
+            <div class="subtext">Upload, organize, and manage your files effortlessly.</div>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <div class="metrics-title">Total Folders</div>
+              <div class="value">
+                <%= userMetrics.numberOfFolders %>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="metric files">
+              <div class="metrics-title">Total Files</div>
+              <div class="value">
+                <%= userMetrics.numberOfFiles %>
+              </div>
+            </div>
+            <div class="line files"></div>
+            <div class="metric">
+              <div class="metrics-title">Storage Used</div>
+              <div class="value">
+                <%= (userMetrics.fileSizesSum._sum.size/userMetrics.totalSize*100).toFixed(2) %><span
+                    class="unit">%</span>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="metric">
+              <div class="metrics-title">Total Storage</div>
+              <div class="value">
+                <%= userMetrics.totalSize/(1024*1024) %><span class="unit">MB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="folders-section">
+          <div class="top-bar">
+            <div class="section-title">Your Folders</div>
+            <button class="new-button">
+              <img src="/plus-icon.svg" alt="Add">
+              New Folder
+            </button>
+          </div>
+          <% if(locals.errors) { %>
+            <%- include("./errors/errors") %>
+              <% } %>
+
+                <% if(locals.allFolders) { %>
+                  <% if(allFolders.length!=0) { %>
+                    <div class="folder-grid">
+                      <% allFolders.forEach((folder)=> { %>
+
+                        <div class="folder-card">
+                          <a class="icon" href="/folder/<%=folder.id%>">
+                            <img src="/folder-icon.svg" alt="Folder">
+                          </a>
+                          <div class="card-content">
+                            <div class="top-row">
+                              <a class="folder-name" href="/folder/<%=folder.id%>">
+                                <%= folder.name %>
+                              </a>
+                              <button class="folder-menu-button" id="folder-menu-<%= folder.id %>"
+                                data-folder-id="<%= folder.id %>" data-folder-name="<%= folder.name %>"
+                                data-folder-share-id="<%= folder.folderShares?.[0]?.id %>"
+                                data-folder-share-expires-at="<%= folder.folderShares?.[0]?.expiresAt %>">
+                                <img src="/menu-icon.svg" alt="Folder">
+                              </button>
+                            </div>
+                            <a href="/folder/<%=folder.id%>" class="additional-info">
+                              <% if(folder.totalSize>1024*1024) { %><%= (folder.totalSize/(1024*1024)).toFixed(2) %>MB
+                                  <% } else { %>
+                                    <%= (folder.totalSize/(1024)).toFixed(2) %>KB <% } %> • <%
+                                          if(folder._count.files==1) {%>1 file<%}else{%>
+                                            <%=folder._count.files%> files <%}%> • <span id="date">
+                                                  <%= folder.createdAt %>
+                                                </span>
+                            </a>
+                          </div>
+                        </div>
+
+
+                        <% }) %>
+
+                    </div>
+
+                    <%} else {%>
+                      <div class="empty">
+                        <div class="line-1"></div>No folders yet!<div class="line-2"></div>
+                      </div>
+                      <% }} %>
+        </div>
+      </div>
+    </div>
+
+
+    <dialog class="add-folder-dialog" closeby="any">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <div class="dialog-info">
+            <img src="/folder-icon-white.svg" alt="Folder">
+            <div class="dialog-name">New Folder</div>
+          </div>
+          <button class="close-dialog-button">
+            <img src="/close-dialog-icon.svg" alt="Close">
+          </button>
+        </div>
+        <div class="dialog-content">
+          <form action="/folder/new" method="POST">
+            <div class="input-container">
+              <input type="text" placeholder="Enter Folder Name" name="folderName" required>
+            </div>
+            <div class="dialog-button-group">
+              <input type="reset" value="Cancel" class="secondary-button">
+              <input type="submit" value="Create" class="primary-button">
+            </div>
+          </form>
+        </div>
+      </div>
+      </div>
+    </dialog>
+
+
+    <dialog class="edit-folder-dialog" closeby="any">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <div class="dialog-info">
+            <img src="/edit-icon.svg" alt="Edit">
+            <div class="dialog-name">Edit</div>
+          </div>
+          <button class="close-dialog-button">
+            <img src="/close-dialog-icon.svg" alt="Close">
+          </button>
+        </div>
+        <div class="dialog-content">
+          <div class="folder-info">
+            <img src="/folder-icon.svg" alt="Folder">
+            <div class="folder-name">Test123</div>
+          </div>
+
+          <form method="POST">
+            <div class="input-container">
+              <input type="text" placeholder="Edit Folder Name" name="folderName" required
+                id="edit-folder-name-input-field">
+            </div>
+            <div class="dialog-button-group">
+              <input type="reset" value="Cancel" class="secondary-button">
+              <input type="submit" value="Rename" class="primary-button">
+            </div>
+          </form>
+
+        </div>
+      </div>
+      </div>
+    </dialog>
+
+
+
+    <dialog class="share-folder-dialog" closeby="any">
+      <%=locals.share%>
+        <div class="dialog-container">
+          <div class="dialog-header">
+            <div class="dialog-info">
+              <img src="/share-icon.svg" alt="Edit">
+              <div class="dialog-name">Share</div>
+            </div>
+            <button class="close-dialog-button">
+              <img src="/close-dialog-icon.svg" alt="Close">
+            </button>
+          </div>
+          <div class="dialog-content">
+            <div class="folder-info">
+              <img src="/folder-icon.svg" alt="Folder">
+              <div class="folder-name">Test123</div>
+            </div>
+
+
+            <form method="POST">
+              <div class="input-container">
+                <label for="duration" class="duration-label">Duration (in days)</label>
+                <input type="number" step="1" min="1" max="60" name="duration" value="1" name="folderName" required
+                  id="share-folder-duration-input-field">
+              </div>
+              <div class="dialog-button-group">
+                <input type="reset" value="Cancel" class="secondary-button">
+                <input type="submit" value="Create Public Link" class="primary-button">
+              </div>
+            </form>
+            <div class="action-info other-elements">
+              <div class="red-chip">Folder share-link is successfully created</div>
+              <div class="prompt">Link will expire in <span class="expiry"></span></div>
+            </div>
+            <div class="dialog-button-group other-elements">
+              <button class="primary-button"><img src="/link-icon.svg">Copy Link</button>
+              <a class="secondary-button">Delete Link</a>
+            </div>
+
+          </div>
+        </div>
+        </div>
+    </dialog>
+
+
+
+    <dialog class="delete-folder-dialog" closeby="any">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <div class="dialog-info">
+            <img src="/delete-icon.svg" alt="Edit">
+            <div class="dialog-name">Delete</div>
+          </div>
+          <button class="close-dialog-button">
+            <img src="/close-dialog-icon.svg" alt="Close">
+          </button>
+        </div>
+        <div class="dialog-content">
+          <div class="folder-info">
+            <img src="/folder-icon.svg" alt="Folder">
+            <div class="folder-name">Test123</div>
+          </div>
+
+          <div class="action-info">
+            <div class="prompt">Are you sure you want to delete?</div>
+            <div class="red-chip">You’ll loose files in this folder, if any</div>
+          </div>
+
+          <form method="POST">
+            <div class="dialog-button-group">
+              <input type="reset" value="Cancel" class="secondary-button" id="delete-dialog-cancel-button">
+              <input type="submit" value="Delete" class="primary-button">
+            </div>
+          </form>
+
+        </div>
+      </div>
+      </div>
+    </dialog>
+</body>
+<script src="/script.js"></script>
+
+</html>

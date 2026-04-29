@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShareFY</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="shortcut icon" href="/brand-icon.svg" type="image/x-icon">
+  <meta name="color-scheme" content="light dark">
+</head>
+
+<body>
+  <%- include("./partials/header") %>
+    <div class="content-container">
+      <div class="content">
+
+        <div class="files-section">
+          <div class="top-bar">
+            <div class="left-group">
+              <a class="back-button" href="/folder/all">
+                <img src="/back-button.svg" alt="Go Back">
+              </a>
+              <img src="/folder-icon.svg" alt="Folder" class="folder-icon">
+              <div class="section-title">
+                <%= folder.name %>
+              </div>
+            </div>
+            <button class="new-button">
+              <img src="/plus-icon.svg" alt="Add">
+              New File
+            </button>
+          </div>
+          <% if(locals.errors) { %>
+            <%- include("./errors/errors") %>
+              <% } %>
+
+                <% if(locals.folder.files) { %>
+                  <% if(folder.files.length!=0) { %>
+                    <div class="files-grid">
+                      <% folder.files.forEach((file)=> { %>
+
+                        <div class="file-card">
+                          <a class="icon" href="/file/<%=file.id%>/download">
+                            <img src="/file-icon.svg" alt="File">
+                          </a>
+                          <div class="card-content">
+                            <div class="top-row">
+                              <a class="file-name" href="/file/<%=file.id%>/download">
+                                <%= file.name %>
+                              </a>
+                              <button class="file-menu-button" id="file-menu-<%= file.id %>"
+                                data-file-id="<%= file.id %>" data-file-name="<%= file.name %>"
+                                data-file-share-id="<%= file.fileShares?.[0]?.id %>"
+                                data-file-share-expires-at="<%= file.fileShares?.[0]?.expiresAt %>">
+                                <img src="/menu-icon.svg" alt="File">
+                              </button>
+                            </div>
+                            <a class="additional-info" href="/file/<%=file.id%>/download">
+                              <% if(file.size>1024*1024) { %><%= (file.size/(1024*1024)).toFixed(2) %>MB <% } else { %>
+                                    <%= (file.size/(1024)).toFixed(2) %>KB <% } %> • <%= file.ext.toUpperCase() %> •
+                                          <span id="date">
+                                            <%= file.createdAt %>
+                                          </span>
+                            </a>
+                          </div>
+                        </div>
+
+
+                        <% }) %>
+
+                    </div>
+
+                    <%} else {%>
+                      <div class="empty">
+                        <div class="line-1"></div>No files yet!<div class="line-2"></div>
+                      </div>
+                      <% }} %>
+        </div>
+      </div>
+    </div>
+
+
+    <dialog class="add-file-dialog" closeby="any">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <div class="dialog-info">
+            <img src="/file-icon-white.svg" alt="File">
+            <div class="dialog-name">Upload File</div>
+          </div>
+          <button class="close-dialog-button">
+            <img src="/close-dialog-icon.svg" alt="Close">
+          </button>
+        </div>
+        <div class="dialog-content">
+          <form action="/folder/<%= folder.id %>/file" method="POST" enctype="multipart/form-data">
+            <div class="input-container">
+              <input type="text" id="file-name-input-field" maxlength="100" placeholder="Enter File Name (optional)"
+                name="fileName">
+            </div>
+
+            <div class="input-container">
+              <input type="file" id="file" value="Choose File" name="uploadedFile" required>
+            </div>
+            <div class="dialog-button-group">
+              <input type="reset" value="Cancel" class="secondary-button">
+              <input type="submit" value="Upload" class="primary-button">
+            </div>
+          </form>
+        </div>
+      </div>
+      </div>
+    </dialog>
+
+
+    <dialog class="edit-file-dialog" closeby="any">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <div class="dialog-info">
+            <img src="/edit-icon.svg" alt="Edit">
+            <div class="dialog-name">Edit</div>
+          </div>
+          <button class="close-dialog-button">
+            <img src="/close-dialog-icon.svg" alt="Close">
+          </button>
+        </div>
+        <div class="dialog-content">
+          <div class="file-info">
+            <img src="/file-icon.svg" alt="File">
+            <div class="file-name">Test123</div>
+          </div>
+
+          <form method="POST">
+            <input type="hidden" name="folderID" value="<%= folder.id %>">
+            <div class="input-container">
+              <input type="text" placeholder="Edit File Name" name="fileName" required id="edit-file-name-input-field"
+                maxlength="100">
+            </div>
+            <div class="dialog-button-group">
+              <input type="reset" value="Cancel" class="secondary-button">
+              <input type="submit" value="Rename" class="primary-button">
+            </div>
+          </form>
+
+        </div>
+      </div>
+      </div>
+    </dialog>
+
+    <dialog class="share-file-dialog" closeby="any">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <div class="dialog-info">
+            <img src="/share-icon.svg" alt="Edit">
+            <div class="dialog-name">Share</div>
+          </div>
+          <button class="close-dialog-button">
+            <img src="/close-dialog-icon.svg" alt="Close">
+          </button>
+        </div>
+        <div class="dialog-content">
+          <div class="file-info">
+            <img src="/file-icon.svg" alt="file">
+            <div class="file-name">Test123</div>
+          </div>
+
+
+          <form method="POST">
+            <div class="input-container">
+              <label for="duration" class="duration-label">Duration (in days)</label>
+              <input type="number" step="1" min="1" max="60" name="duration" value="1" name="folderName" required
+                id="share-file-duration-input-field">
+            </div>
+            <div class="dialog-button-group">
+              <input type="reset" value="Cancel" class="secondary-button">
+              <input type="submit" value="Create Public Link" class="primary-button">
+            </div>
+            <input type="hidden" name="folderID" value="<%= folder.id %>">
+          </form>
+          <div class="action-info other-elements">
+            <div class="red-chip">File share-link is successfully created</div>
+            <div class="prompt">Link will expire in <span class="expiry"></span></div>
+          </div>
+          <div class="dialog-button-group other-elements">
+            <button class="primary-button"><img src="/link-icon.svg">Copy Link</button>
+            <form method="GET" id="delete-form">
+              <input type="submit" class="secondary-button" value="Delete Link" class="secondary-button">
+              <input type="hidden" name="folderID" value="<%= folder.id %>">
+            </form>
+          </div>
+
+        </div>
+      </div>
+      </div>
+    </dialog>
+
+
+    <dialog class="delete-file-dialog" closeby="any">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <div class="dialog-info">
+            <img src="/delete-icon.svg" alt="Edit">
+            <div class="dialog-name">Delete</div>
+          </div>
+          <button class="close-dialog-button">
+            <img src="/close-dialog-icon.svg" alt="Close">
+          </button>
+        </div>
+        <div class="dialog-content">
+          <div class="file-info">
+            <img src="/file-icon.svg" alt="File">
+            <div class="file-name">Test123</div>
+          </div>
+
+          <div class="action-info">
+            <div class="prompt">Are you sure you want to delete?</div>
+            <div class="red-chip">You’ll loose the file permanently</div>
+          </div>
+
+          <form method="POST">
+            <input type="hidden" name="folderID" value="<%= folder.id %>">
+            <div class="dialog-button-group">
+              <input type="reset" value="Cancel" class="secondary-button" id="delete-file-dialog-cancel-button">
+              <input type="submit" value="Delete" class="primary-button">
+            </div>
+          </form>
+
+        </div>
+      </div>
+      </div>
+    </dialog>
+</body>
+<script src="/script.js"></script>
+
+</html>

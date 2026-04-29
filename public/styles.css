@@ -1,0 +1,2429 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Righteous";
+  src: url("./Righteous-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("./Geist-VariableFont_wght.ttf") format("truetype");
+}
+
+body {
+  font-family: "Geist";
+  padding: 0;
+  margin: 0;
+  background-color: #191A1D;
+  color: #f4f4f4;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.375rem;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transition: background-color 0.3s ease-in-out 0.1s,
+    backdrop-filter 0.3s ease-in-out 0.1s,
+    filter 0.3s ease-in-out 0.1s,
+    border-bottom 0.3s ease-in-out 0.1s;
+  ;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background-color: #1e2129bd;
+  backdrop-filter: blur(15px);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  border-bottom: 1px solid #333a4ac5;
+}
+
+.header .brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header .brand .icon {
+  height: 1.3rem;
+}
+
+.header .brand .name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+}
+
+.header .nav {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.header .nav a {
+  color: #f4f4f4;
+  font-family: "Geist";
+  font-weight: 500;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 1378px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+
+@media screen and (max-width:1400px) {
+  .content {
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .content {
+    width: 100%;
+    padding: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  input {
+    width: 90%;
+  }
+}
+
+.gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20rem;
+  background: linear-gradient(to bottom, #1A2545, #191A1D);
+  z-index: -2;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.hero-section .hero-text {
+  font-family: "Righteous";
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.hero-section .hero-text span {
+  background: linear-gradient(to right, #6abcff, #0070CC);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-section .action-button {
+  background-color: #238BE1;
+  border: 2px solid #3C92D8;
+  color: #f4f4f4;
+  font-family: "Geist";
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.dashboard-representation {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+@media screen and (max-width:768px) {
+  .dashboard-representation {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .dashboard-representation {
+    margin-top: 4rem;
+  }
+}
+
+.dashboard-representation img {
+  border: 1px solid #333A4A;
+  width: 100%;
+  border-radius: 0.5rem;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+}
+
+.dashboard-representation .subtext {
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.feature-section {
+  background-color: #141518;
+  border: 1px solid #070707;
+  border-radius: 1rem;
+  margin: 4rem;
+  padding: 4rem;
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width:768px) {
+  .feature-section {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2rem;
+  }
+}
+
+.feature-section .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+@media screen and (max-width:1140px) {
+  .feature-section .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.feature-section .card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.feature-section .icon-container {
+  border: 3px solid #f4f4f4;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 4.5rem;
+  width: 4.5rem;
+  aspect-ratio: 1/1;
+  border-radius: 0.5rem;
+}
+
+.feature-section .title {
+  font-family: "Righteous";
+  font-size: 1.5rem;
+}
+
+.feature-section .subtext {
+  color: #C3C3C3;
+  margin-top: 0.5rem;
+}
+
+@media screen and (max-width:768px) {
+  .feature-section .title {
+    font-size: 1.25rem;
+  }
+
+  .feature-section .subtext {
+    font-size: 0.9rem;
+  }
+}
+
+.tech-stack-section {
+  margin: 4rem;
+  margin-top: 6rem;
+}
+
+@media screen and (max-width:768px) {
+  .tech-stack-section {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.tech-stack-section .title-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.line-1 {
+  height: 2px;
+  background: linear-gradient(to right, #191a1de0, #f4f4f4d2);
+  flex: 1;
+}
+
+
+.line-2 {
+  height: 2px;
+  background: linear-gradient(to left, #191a1de0, #f4f4f4d2);
+  flex: 1;
+}
+
+.tech-stack-section .title {
+  font-size: 2rem;
+  font-family: "Righteous";
+}
+
+.tech-stack-section .marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 2rem;
+}
+
+.tech-stack-section .marquee-container .marquee-content {
+  display: inline-flex;
+  gap: 1rem;
+  animation: marquee-scroll 10s linear infinite;
+}
+
+.tech-stack-section .item {
+  background-color: #141518;
+  border: 1px solid #070707;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  width: 13ch;
+  text-align: center;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.footer {
+  font-family: "Righteous";
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 2rem;
+  color: #B8B8B8;
+}
+
+.footer a {
+  color: #43aaff;
+  margin: 0 4px;
+}
+
+.form-container {
+  width: 450px;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  background-color: #1E2129;
+  border: 1px solid #333A4A;
+  border-radius: 1rem;
+  padding: 2rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media screen and (max-width:550px) {
+  .form-container {
+    width: 85%;
+  }
+}
+
+.form-container .title {
+  font-family: "Righteous";
+  font-size: 1.8rem;
+  text-align: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #333A4A;
+}
+
+.form-container .form-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  padding: 2rem 0;
+}
+
+.input-container {
+  background-color: #252933;
+  border: 1px solid #333A4A;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-container:focus-within {
+  background-color: #2d3341;
+  border-color: #444b5b;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  flex: 1;
+  border-radius: 0.3rem;
+  outline: none;
+  background-color: #1C1F27;
+  border: none;
+  padding: 0.35rem 1rem;
+  color: #f5f5f5;
+  font-size: 1.08rem;
+  font-family: "Geist";
+}
+
+input[type="number"] {
+  padding-right: 0.5rem;
+}
+
+.form-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.submit-button {
+  background-color: #238BE1;
+  border: 1px solid #3C92D8;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 1.25rem;
+  margin-top: 0.8rem;
+  width: 100%;
+  text-align: center;
+  color: #f4f4f4;
+}
+
+.bottom-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333A4A;
+}
+
+.bottom-section div {
+  color: #B8B8B8;
+  font-weight: 500;
+}
+
+.bottom-section a {
+  color: #43aaff;
+}
+
+
+@media screen and (max-width:600px) {
+  input {
+    width: 90%;
+  }
+}
+
+.errors-container {
+  background-color: #713535b6;
+  border: 1px solid #a143438b;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #f4f4f4;
+}
+
+.errors-container .error-title {
+  font-family: "Geist";
+  font-weight: 500;
+}
+
+.errors-container ul {
+  font-family: "Geist";
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.banner .greeting .text {
+  font-family: "Righteous";
+  font-size: 2rem;
+}
+
+.banner .greeting .subtext {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #B8B8B8;
+  margin-top: 0.5rem;
+  line-height: 1.5rem;
+}
+
+.banner .metrics {
+  background-color: #1E2129;
+  border: 1px solid #333a4A;
+  display: flex;
+  padding: 0.75rem 0;
+  flex-direction: row;
+  border-radius: 0.5rem;
+}
+
+.banner .metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.05rem;
+}
+
+.banner .metrics-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.banner .metrics .value {
+  font-size: 1.5rem;
+  color: #B8B8B8;
+  font-weight: bold;
+}
+
+.banner .metrics .unit {
+  font-size: 0.9rem;
+}
+
+.banner .metrics .line {
+  background-color: #333A4A;
+  width: 1px;
+}
+
+@media screen and (max-width:800px) {
+  .banner .greeting {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .banner .metrics .title {
+    font-size: 0.8rem;
+  }
+
+  .banner .metrics .value {
+    font-size: 1.25rem;
+  }
+
+  .banner {
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  .banner .greeting {
+    text-align: center;
+  }
+
+  .banner .metrics {
+    width: 100%;
+    justify-content: space-around;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .banner .files {
+    display: none;
+  }
+
+  .banner .metrics {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.folders-section {
+  margin-top: 5rem;
+}
+
+.folders-section .top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #333A4A;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.folders-section .section-title {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+}
+
+.folders-section .new-button {
+  font-size: 1rem;
+  background-color: #238BE1;
+  border: 1px solid #3C92D8;
+  color: #f4f4f4;
+  font-weight: 550;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.375rem;
+  font-family: "Geist";
+}
+
+.folders-section .folder-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.folder-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  padding-right: 1rem;
+  transition: background-color 0.15s ease-out, transform 0.15s ease-out, filter 0.15s ease-out;
+}
+
+.folder-card:hover {
+  background-color: #1E2129;
+  transform: translateY(-0.125rem);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.folder-card .icon {
+  padding-right: 1rem;
+  height: 100%;
+}
+
+.folder-card .card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+.folder-card .top-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.folder-menu-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-out;
+  cursor: pointer;
+}
+
+.folder-card:hover .folder-menu-button {
+  background-color: #333A4A;
+}
+
+.folder-card .folder-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+  flex: 1;
+  max-width: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.folder-card .additional-info {
+  color: #B8B8B8;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+}
+
+dialog {
+  position: relative;
+  z-index: 100;
+  animation: fade-out 0.15s ease-out;
+}
+
+dialog:open {
+  animation: fade-in 0.15s ease-out;
+}
+
+dialog:open::backdrop {
+  animation: backdrop-fade-in 0.15s ease-out forwards;
+}
+
+/* Animation keyframes */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    display: block;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes backdrop-fade-in {
+  0% {
+    background-color: rgb(0 0 0 / 0%);
+  }
+
+  100% {
+    background-color: rgb(0 0 0 / 15%);
+  }
+}
+
+.add-folder-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  width: 360px;
+  box-sizing: border-box;
+  background-color: #1E2129;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  margin: 0;
+  padding: 0;
+}
+
+.add-folder-dialog>.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #252933;
+  padding: 0.65rem 0.9rem;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-header>.dialog-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  height: 1.5rem;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-header>.dialog-info>.dialog-name {
+  color: #f4f4f4;
+  font-size: 1.125rem;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-header>.close-dialog-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-content {
+  padding: 1rem;
+  padding-top: 1.125rem;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-content .dialog-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #333A4A;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #252933;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button:hover {
+  background-color: #292f3d;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button:hover {
+  background-color: #399cee;
+}
+
+.mycdm-flex {
+  display: flex;
+}
+
+.mycdm-flex-col {
+  flex-direction: column;
+}
+
+.mycdm-border-1 {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.mycdm-border-b-1 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.mycdm-border-gray {
+  border-color: #333A4A;
+}
+
+.mycdm-bg-light {
+  background-color: #1E2129;
+}
+
+.mycdm-hover-bg-medium:hover {
+  background-color: #292D38;
+}
+
+.mycdm-active-bg-dark-medium:active {
+  background-color: #333A4A;
+}
+
+.mycdm-rounded-md {
+  border-radius: 0.5rem;
+}
+
+.mycdm-shadow {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.mycdm-font-semibold {
+  font-weight: 600;
+}
+
+.mycdm-text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.mycdm-text-dark {
+  color: #3c3c3c;
+}
+
+.mycdm-px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mycdm-py-2-5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.mycdm-p-4 {
+  padding: 1rem;
+}
+
+.mycdm-mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mycdm-fade-in {
+  animation: mycdm-fadeIn 0.3s ease;
+  opacity: 1;
+}
+
+.mycdm-fade-out {
+  animation: mycdm-fadeOut 0.3s ease;
+  opacity: 0;
+}
+
+@keyframes mycdm-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes mycdm-fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.mycdm-menu-card {
+  z-index: 1000;
+  transition: all 0.3s ease;
+  font-family: "Inter";
+}
+
+.mycdm-menu-title {
+  user-select: none;
+}
+
+.mycdm-action-item {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: "Geist";
+  font-weight: 500;
+  margin: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.mycdm-action-item:hover {
+  transition: background-color 0.15s ease;
+}
+
+.mycdm-action-item:active {
+  transition: background-color 0.1s ease;
+}
+
+.mycdm-flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.edit-folder-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  width: 360px;
+  box-sizing: border-box;
+  background-color: #1E2129;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  margin: 0;
+  padding: 0;
+}
+
+.edit-folder-dialog>.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #252933;
+  padding: 0.65rem 0.9rem;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-header>.dialog-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  height: 1.5rem;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-header>.dialog-info>.dialog-name {
+  color: #f4f4f4;
+  font-size: 1.125rem;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  width: 1.75rem;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-header>.close-dialog-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content {
+  padding: 1rem;
+  padding-top: 1.125rem;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content .dialog-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #333A4A;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #252933;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button:hover {
+  background-color: #292f3d;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button:hover {
+  background-color: #399cee;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content>.folder-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #252933;
+  border: 1px solid #333A4A;
+  border-radius: 2rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content>.folder-info>.folder-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edit-folder-dialog>.dialog-container>.dialog-content>.folder-info>img {
+  width: 1.5rem;
+}
+
+
+
+.delete-folder-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  width: 360px;
+  box-sizing: border-box;
+  background-color: #1E2129;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  margin: 0;
+  padding: 0;
+}
+
+.delete-folder-dialog>.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #252933;
+  padding: 0.65rem 0.9rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-header>.dialog-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  height: 1.5rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-header>.dialog-info>.dialog-name {
+  color: #f4f4f4;
+  font-size: 1.125rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  width: 1.75rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-header>.close-dialog-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content {
+  padding: 1rem;
+  padding-top: 1.125rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content .dialog-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #333A4A;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #252933;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button:hover {
+  background-color: #292f3d;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #4D3030;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #DE3D3D;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button:hover {
+  background-color: #ef4b4b;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content>.folder-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #252933;
+  border: 1px solid #333A4A;
+  border-radius: 2rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content>.folder-info>.folder-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content>.folder-info>img {
+  width: 1.5rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content>.action-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content>.action-info>.prompt {
+  color: #b8b8b8;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.delete-folder-dialog>.dialog-container>.dialog-content>.action-info>.red-chip {
+  background-color: #4D3030;
+  border: 1px solid #4A3333;
+  color: #FF6666;
+  border-radius: 2rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.empty {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+
+  margin-top: 3rem;
+
+  font-weight: 500;
+  font-style: italic;
+}
+
+.files-section .top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #333A4A;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+@media screen and (max-width:768px) {
+  .files-section .top-bar {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: normal;
+    gap: 1rem;
+  }
+}
+
+.files-section .top-bar .left-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.files-section .top-bar .left-group .folder-icon {
+  padding-bottom: 0.25rem;
+}
+
+.files-section .top-bar .back-button {
+  margin-right: 1.5rem;
+}
+
+.files-section .top-bar .back-button img {
+  width: 2rem;
+}
+
+.files-section .section-title {
+  font-family: "Righteous";
+  font-size: 1.375rem;
+  color: #f4f4f4;
+  margin-left: 1rem;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.files-section .new-button {
+  font-size: 1rem;
+  background-color: #238BE1;
+  border: 1px solid #3C92D8;
+  color: #f4f4f4;
+  font-weight: 550;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.375rem;
+  font-family: "Geist";
+  justify-content: center;
+}
+
+@media screen and (max-width:768px) {
+  .files-section .new-button {
+    padding: 0.75rem 1.25rem;
+    border-radius: 2rem;
+    font-size: 1.25rem;
+    position: fixed;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid #0070CC;
+  }
+
+  .files-section .new-button img {
+    width: 1.125rem;
+  }
+}
+
+.files-section .files-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.file-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  padding-right: 1rem;
+  transition: background-color 0.15s ease-out, transform 0.15s ease-out, filter 0.15s ease-out;
+}
+
+.file-card:hover {
+  background-color: #1E2129;
+  transform: translateY(-0.125rem);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.file-card .icon {
+  margin-right: 1rem;
+}
+
+.file-card .card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+.file-card .top-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.file-menu-button {
+  cursor: pointer;
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-out;
+}
+
+.file-card:hover .file-menu-button {
+  background-color: #333A4A;
+}
+
+.file-card .file-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+  flex: 1;
+  max-width: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-card .additional-info {
+  color: #B8B8B8;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+}
+
+.file-card .additional img {
+  height: 2rem;
+  transition: scale ease-out 0.15s;
+}
+
+.file-card .additional:hover img {
+  scale: 1.2;
+}
+
+
+.add-file-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  width: 360px;
+  box-sizing: border-box;
+  background-color: #1E2129;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  margin: 0;
+  padding: 0;
+}
+
+.add-file-dialog>.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-file-dialog>.dialog-container>.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #252933;
+  padding: 0.65rem 0.9rem;
+}
+
+.add-file-dialog>.dialog-container>.dialog-header>.dialog-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.add-file-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  height: 1.5rem;
+}
+
+.add-file-dialog>.dialog-container>.dialog-header>.dialog-info>.dialog-name {
+  color: #f4f4f4;
+  font-size: 1.125rem;
+}
+
+.add-file-dialog>.dialog-container>.dialog-header>.close-dialog-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+}
+
+.add-file-dialog>.dialog-container>.dialog-content {
+  padding: 1rem;
+  padding-top: 1.125rem;
+}
+
+.add-file-dialog>.dialog-container>.dialog-content>form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-file-dialog>.dialog-container>.dialog-content .dialog-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.add-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #333A4A;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #252933;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.add-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button:hover {
+  background-color: #292f3d;
+}
+
+.add-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.add-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button:hover {
+  background-color: #399cee;
+}
+
+input[type="file"] {
+  color: #f4f4f4;
+  font-size: 1rem;
+}
+
+input[type="file"]::file-selector-button {
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+  margin-right: 1rem;
+  font-family: "Righteous";
+  font-size: 1.125rem;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #399cee;
+}
+
+.edit-file-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  width: 360px;
+  box-sizing: border-box;
+  background-color: #1E2129;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  margin: 0;
+  padding: 0;
+}
+
+.edit-file-dialog>.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #252933;
+  padding: 0.65rem 0.9rem;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-header>.dialog-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.add-folder-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  height: 1.5rem;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-header>.dialog-info>.dialog-name {
+  color: #f4f4f4;
+  font-size: 1.125rem;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  width: 1.75rem;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-header>.close-dialog-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content {
+  padding: 1rem;
+  padding-top: 1.125rem;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content .dialog-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #333A4A;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #252933;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button:hover {
+  background-color: #292f3d;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button:hover {
+  background-color: #399cee;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content>.file-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #252933;
+  border: 1px solid #333A4A;
+  border-radius: 2rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content>.file-info>.file-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edit-file-dialog>.dialog-container>.dialog-content>.file-info>img {
+  width: 1.5rem;
+}
+
+.delete-file-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  width: 360px;
+  box-sizing: border-box;
+  background-color: #1E2129;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  margin: 0;
+  padding: 0;
+}
+
+.delete-file-dialog>.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #252933;
+  padding: 0.65rem 0.9rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-header>.dialog-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  height: 1.5rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-header>.dialog-info>.dialog-name {
+  color: #f4f4f4;
+  font-size: 1.125rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  width: 1.75rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-header>.close-dialog-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content {
+  padding: 1rem;
+  padding-top: 1.125rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content .dialog-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #333A4A;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #252933;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button:hover {
+  background-color: #292f3d;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #4D3030;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #DE3D3D;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button:hover {
+  background-color: #ef4b4b;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content>.file-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #252933;
+  border: 1px solid #333A4A;
+  border-radius: 2rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content>.file-info>.file-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content>.file-info>img {
+  width: 1.5rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content>.action-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content>.action-info>.prompt {
+  color: #b8b8b8;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.delete-file-dialog>.dialog-container>.dialog-content>.action-info>.red-chip {
+  background-color: #4D3030;
+  border: 1px solid #4A3333;
+  color: #FF6666;
+  border-radius: 2rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+
+
+
+
+.share-folder-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  width: 360px;
+  box-sizing: border-box;
+  background-color: #1E2129;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.share-folder-dialog>.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #252933;
+  padding: 0.65rem 0.9rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-header>.dialog-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  height: 1.5rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-header>.dialog-info>.dialog-name {
+  color: #f4f4f4;
+  font-size: 1.125rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  width: 1.75rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-header>.close-dialog-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content {
+  padding: 1rem;
+  padding-top: 1.125rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content .dialog-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content>.folder-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #252933;
+  border: 1px solid #333A4A;
+  border-radius: 2rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content>.folder-info>.folder-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content>.folder-info>img {
+  width: 1.5rem;
+}
+
+.share-folder-dialog .duration-label {
+  padding-left: 0.5rem;
+  color: #f4f4f4;
+  font-weight: 500;
+}
+
+
+.share-folder-dialog>.dialog-container>.dialog-content>.action-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content>.action-info>.prompt {
+  color: #b8b8b8;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content>.action-info>.red-chip {
+  background-color: #4D3030;
+  border: 1px solid #4A3333;
+  color: #FF6666;
+  border-radius: 2rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+  user-select: none;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button>img {
+  height: 1.25rem;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button:hover {
+  background-color: #399cee;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #4D3030;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #DE3D3D;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+  user-select: none;
+}
+
+.share-folder-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button:hover {
+  background-color: #ef4b4b;
+}
+
+.share-folder-dialog .other-elements .primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  padding-right: 1.5rem;
+}
+
+.share-folder-dialog .other-elements .primary-button:hover {
+  background-color: #399cee;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+
+
+
+.share-file-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333A4A;
+  border-radius: 0.5rem;
+  width: 360px;
+  box-sizing: border-box;
+  background-color: #1E2129;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.share-file-dialog>.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.share-file-dialog>.dialog-container>.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #252933;
+  padding: 0.65rem 0.9rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-header>.dialog-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  height: 1.5rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-header>.dialog-info>.dialog-name {
+  color: #f4f4f4;
+  font-size: 1.125rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-header>.dialog-info>img {
+  width: 1.75rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-header>.close-dialog-button {
+  background-color: #282B33;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  border: none;
+  height: 1.8rem;
+  width: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content {
+  padding: 1rem;
+  padding-top: 1.125rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content .dialog-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content>.file-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #252933;
+  border: 1px solid #333A4A;
+  border-radius: 2rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content>.file-info>.file-name {
+  font-family: "Righteous";
+  font-size: 1.25rem;
+  color: #f4f4f4;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content>.file-info>img {
+  width: 1.5rem;
+}
+
+.share-file-dialog .duration-label {
+  padding-left: 0.5rem;
+  color: #f4f4f4;
+  font-weight: 500;
+}
+
+
+.share-file-dialog>.dialog-container>.dialog-content>.action-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content>.action-info>.prompt {
+  color: #b8b8b8;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content>.action-info>.red-chip {
+  background-color: #4D3030;
+  border: 1px solid #4A3333;
+  color: #FF6666;
+  border-radius: 2rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+  user-select: none;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button>img {
+  height: 1.25rem;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.primary-button:hover {
+  background-color: #399cee;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #4D3030;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #DE3D3D;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+  user-select: none;
+}
+
+.share-file-dialog>.dialog-container>.dialog-content .dialog-button-group>.secondary-button:hover {
+  background-color: #ef4b4b;
+}
+
+.share-file-dialog .other-elements .primary-button {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #3C92D8;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #238BE1;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  padding-right: 1.5rem;
+}
+
+.share-file-dialog .other-elements .primary-button:hover {
+  background-color: #399cee;
+}
+
+.share-file-dialog #delete-form {
+  flex: 1;
+  height: 100%;
+}
+
+.share-file-dialog .other-elements .secondary-button {
+  text-align: center;
+  width: 100%;
+  border: 1px solid #4D3030;
+  padding: 0.55rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #DE3D3D;
+  color: #f4f4f4;
+  transition: background-color 0.15s ease-out;
+  user-select: none;
+}
+
+.share-file-dialog .other-elements .secondary-button:hover {
+  background-color: #ef4b4b;
+}
+
+.centered-container {
+  position: fixed;
+  bottom: 4rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered-container .user-info,
+.centered .user-info {
+  background-color: #1E2129;
+  border: 1px solid #333A4A;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.53));
+  border-radius: 2rem;
+  padding: 0.25rem 1rem;
+
+  font-family: "Righteous";
+  font-size: 1.5rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem;
+}
+
+.centered .user-info {
+  margin: 0;
+}
+
+.centered {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.centered>a {
+  color: #238BE1;
+  font-weight: 500;
+  border: 2px solid #238BE1;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+@media screen and (max-width:600px) {
+
+  .centered-container .user-info,
+  .centered .user-info {
+    font-size: 1.125rem;
+  }
+
+  .centered-container .user-info img,
+  .centered .user-info img {
+    height: 1.75rem;
+  }
+}

@@ -88,19 +88,29 @@ const deleteFilePost: RequestHandler = async (req, res, next) => {
   const fileID = Number(req.params.id);
 
   try {
-    const file = await prisma.file.delete({
+    const file = await prisma.file.findFirst({
       where: {
         id: fileID,
         userID: res.locals.currentUser.id,
       },
     });
 
-    if (file) {
-      const result = await cloudinary.uploader.destroy(file.public_id);
-      if (result.result != "ok") {
-        new Error("Could not delete file from Cloudinary");
-      }
-    } else {
+    if (!file) {
+      return res.status(404).render("errorpage", {
+        prompt: "File Not Found",
+      });
+    }
+
+    await prisma.file.deleteMany({
+      where: {
+        id: fileID,
+        userID: res.locals.currentUser.id,
+      },
+    });
+
+    const result = await cloudinary.uploader.destroy(file.public_id);
+    if (result.result != "ok") {
+      throw new Error("Could not delete file from Cloudinary");
     }
   } catch (err) {
     return next(err);

@@ -260,7 +260,7 @@ function openShareFolderDialog(selectedFolderName, selectedFolderID, folderShare
     otherElements.forEach(ele => ele.classList.remove("hidden"));
 
     copyLinkButton.addEventListener("click", () => {
-      navigator.clipboard.writeText(window.location.hostname + `/publicshare/folder/${folderShareId}`)
+      navigator.clipboard.writeText(`${window.location.origin}/publicshare/folder/${folderShareId}`)
       alert("Folder share link copied to clipboard");
     });
 
@@ -481,7 +481,7 @@ function openShareFileDialog(selectedFileName, selectedFileID, fileShareId, file
     otherElements.forEach(ele => ele.classList.remove("hidden"));
 
     copyLinkButton.addEventListener("click", () => {
-      navigator.clipboard.writeText(window.location.hostname + `/publicshare/file/${fileShareId}`)
+      navigator.clipboard.writeText(`${window.location.origin}/publicshare/file/${fileShareId}`)
       alert("File share link copied to clipboard");
     });
 

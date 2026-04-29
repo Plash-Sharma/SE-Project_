@@ -12,12 +12,23 @@ const downloadFile = async (
   res: Response,
   next: NextFunction,
 ) => {
+  // runtime debug: confirm cloudinary config is loaded (does NOT print secrets)
+  try {
+    const cfg = cloudinary.config();
+    // only show cloud_name and whether api_key is present
+    // this helps debug 401s without revealing the API secret
+    // (safe to log in local dev only)
+    // eslint-disable-next-line no-console
+    console.log("[debug] cloudinary config:", { cloud_name: cfg.cloud_name, api_key_present: !!cfg.api_key });
+  } catch (e) {
+    // ignore
+  }
   const downloadURL = cloudinary.url(fileData.public_id, {
     resource_type: fileData.resource_type,
     version: fileData.version,
     flags: "attachment",
     sign_url: true,
-    type: "private",
+    type: "authenticated",
   });
 
   const finalDownloadFileName = `${fileData.name}_${Math.round(Math.random() * 10000)}.${fileData.ext}`;

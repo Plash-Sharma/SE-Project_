@@ -1,24 +1,10 @@
 # File Uploader (ShareFY)
 
-A full-stack file management web app built as the **File Uploader Assignment from The Odin Project**.
+A full-stack file management web app focused on secure uploads, organization, and public sharing.
 
-This is my most complex project yet: from concept and UI design to backend architecture, database modeling, authentication/authorization, cloud file integration, and public sharing workflows.
+This project covers end-to-end implementation: concept and UI design, backend architecture, database modeling, authentication/authorization, cloud file integration, and public sharing workflows.
 
 ![ShareFY Dashboard](public/dashboard.png)
-
-## Authorship Note
-
-I made this project **95% without using AI**.
-
-I designed and implemented the major parts myself end-to-end:
-
-- product design and feature planning
-- UI structure and styling
-- backend architecture and route/controller/service structure
-- database schema and migration workflow
-- API integration with Cloudinary
-- authentication and authorization system
-- protected/private and public sharing flows
 
 ## Project Identity
 
@@ -393,9 +379,9 @@ npm start
 - `npm run build` -> compile TypeScript to `dist/`
 - `npm start` -> run compiled server from `dist/index.js`
 
-## Assignment Context
+## Project Scope
 
-This project was created as the **File Uploader project from The Odin Project** and intentionally pushes beyond the minimum assignment baseline:
+This project intentionally pushes beyond a basic uploader baseline with:
 
 - stronger data modeling
 - robust auth and protected route layering
@@ -407,4 +393,4 @@ This project was created as the **File Uploader project from The Odin Project** 
 
 **Version:** 1.0
 
-This is currently the most complex project in my Odin journey, and it represents a major step in full-stack system design, backend architecture, and real-world integration work.
+This project represents a strong step in full-stack system design, backend architecture, and real-world integration work.

@@ -24,7 +24,8 @@ const uploadFile = async (
 
   const result = await cloudinary.uploader.upload(file.path, {
     folder: "nodejs-file-uploader",
-    type: "private",
+    resource_type: "auto",
+    type: "authenticated",
   });
 
   const name =
